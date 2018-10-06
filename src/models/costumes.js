@@ -1,5 +1,5 @@
 // Models
-// Model - Data
+
 const uuid = require('uuid/v4')
 const costumes = []
 
