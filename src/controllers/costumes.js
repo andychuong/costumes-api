@@ -24,7 +24,6 @@ function getOneCostume (req, res, next) {
 
 function updateCostume (req, res, next) {
   const data = model.updateCostume(req.params.id, req.body)
-  console.log(data.status)
   if(data.error){
     return next({ status: data.error.status, message: data.error.message})
   }
@@ -32,7 +31,6 @@ function updateCostume (req, res, next) {
 }
 
 function deleteCostume (req, res, next) {
-  // console.log('inside deleteCostume')
   const data = model.deleteCostume(req.params.id)
   if(data.error){
     return next({ status:404, message: data.error})
