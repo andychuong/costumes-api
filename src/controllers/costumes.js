@@ -2,7 +2,7 @@
 const model = require('../models/costumes')
 
 function createCostume(req, res, next) {
-  const result = model.create(req.body)
+  const result = model.createCostume(req.body)
   if (result.errors) {
     return next({
       status: 400,
@@ -16,7 +16,7 @@ function createCostume(req, res, next) {
 }
 
 function getAll(req, res, next) {
-  const data = model.getAll()
+  const data = model.getAllCostumes()
   res.status(200).json({
     data: data
   })

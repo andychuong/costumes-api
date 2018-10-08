@@ -3,7 +3,7 @@ const uuid = require('uuid/v4')
 const costumes = []
 
 // Create Costume!
-function create(body) {
+function createCostume(body) {
   const errors = []
   const name = body.name
   let response
@@ -24,7 +24,7 @@ function create(body) {
 }
 
 // Get All Costumes
-function getAll() {
+function getAllCostumes() {
   return costumes
 }
 
@@ -96,8 +96,8 @@ function deleteCostume(id) {
 }
 
 module.exports = {
-  create,
-  getAll,
+  createCostume,
+  getAllCostumes,
   getOneCostume,
   updateCostume,
   deleteCostume
