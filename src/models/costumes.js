@@ -51,6 +51,7 @@ function getOneCostume(id) {
   return response
 }
 
+// Update A Costume
 function updateCostume(id, body) {
   let error = {}
   const costume = costumes.find(costume => costume.id === id)
@@ -124,8 +125,13 @@ function createTag(costume, body){
   return response
 }
 
-function getTags(costume){
-  return costume.tags
+function getTags(costumeId){
+  const costume = costumes.find(costume => costume.id === costumeId)
+  if(costume) {
+    return costume.tags
+  } else {
+    return {`Could not find costume with id of ${costumeID}`}
+  }
 }
 
 function getOneTag(costumeId, tagId) {
@@ -187,7 +193,31 @@ function updateTag(costumeId, tagId, body) {
 }
 
 function deleteTag(costumeId, tagId){
-  
+  let error = {}
+  let response
+  const costume = costumes.find(costume => costume.id === costumeId)
+  if (costume) {
+    const tag = costumes.tags.find(tag => tag.id === tagId)
+    let tagIndex = costume.tags.indexOf(tag)
+    if(tag) {
+      costume.tags.splice(tagIndex,1)
+      response = { tag }
+    } else {
+      error.message = `Could not find tag with id of ${tagId}`
+      error.status = 404
+      response = {
+        error
+      }
+    }
+  } else {
+    error.message = `Could not find costume with id of ${costumeId}`
+    error.status = 404
+    response = {
+      error
+    }
+  }
+  return response
+}
 }
 
 module.exports = {
