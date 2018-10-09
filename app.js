@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/costumes', costumesRouter)
-app.use('/costumes/tags', tagsRouter)
+app.use('/costumes', tagsRouter)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500

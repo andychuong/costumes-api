@@ -102,25 +102,40 @@ function deleteCostume(id) {
   return response
 }
 
-function createTag(costume, body){
+function createTag(costumeId, body){
+  const costume = costumes.find(costume => costume.id === costumeId)
+  console.log(costume)
+  console.log(costumeId)
   const errors = []
   const name = body.name
-  const Color = body.color
-
+  const color = body.color
   let response
-  if (!name || !color) {
-    errors.push(`Name and color are required`)
+  console.log(name)
+  console.log(color)
+  if(costume) {
+    console.log('HELLLLO')
+    if (!name || !color){
+      console.log('dont make things')
+      errors.push(`Name and color are required`)
+      response = {
+        errors
+      }
+    } else {
+      console.log('should make things')
+      // console.log(name)
+      const newTag = {
+        id: uuid(),
+        name,
+        color
+      }
+      costume.tags.push(newTag)
+      response = newTag
+    }
+  } else {
+    errors.push(`Costume not found`)
     response = {
       errors
     }
-  } else {
-    const newTag = {
-      id: uuid(),
-      name,
-      color
-    }
-    costumes.tags.push(newTag)
-    response = newTag
   }
   return response
 }

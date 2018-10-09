@@ -2,9 +2,11 @@
 const model = require('../models/costumes')
 
 function createTag(req, res, next) {
-  // console.log('createtag')
+  console.log('createtag')
   // console.log(req.body)
-  const result = model.createTag(req.body)
+  // const costumeId = req.params.id
+  console.log(req.params.id)
+  const result = model.createTag(req.params.id, req.body)
   if (result.errors) {
     return next({
       status: 400,

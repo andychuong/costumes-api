@@ -7,7 +7,7 @@ const control = require('../controllers/costumes')
 router.get('/', control.getAll)
 // http://localhost:3000/costumes/$id
 router.get('/:id', control.getOneCostume)
-// http  --json POST http://localhost:3000/costumes name=Harry+Potter
+// http  --json POST http://localhost:3000/costumes name=Harry+Potter price=5.00 desc=Cool+HP+Costume
 router.post('/', control.createCostume)
 // http --json PUT http://localhost:3000/costumes/$id name=Ron+Weasley
 router.put('/:id', control.updateCostume)
