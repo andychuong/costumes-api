@@ -80,7 +80,7 @@ function getOneCostume(id) {
 //   return response
 // }
 
-function updateCostumeName(id, body) {
+function updateCostume(id, body) {
   let error = {}
   const costume = costumes.find(costume => costume.id === id)
   const costumeIndex = costumes.indexOf(costume)
@@ -197,7 +197,7 @@ module.exports = {
   createCostume,
   getAllCostumes,
   getOneCostume,
-  updateCostumeName,
+  updateCostume,
   deleteCostume,
   createTag,
   getTags,

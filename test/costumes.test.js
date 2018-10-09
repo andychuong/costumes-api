@@ -94,7 +94,9 @@ describe('costumes Resources', function() {
           expect(res.body.data).to.be.an('array')
           const costume = res.body.data[0]
           const newInfo = {
-            name: 'Incredible Hulk'
+            name: 'Incredible Hulk',
+            price: '$5.10',
+            desc: 'Awesome green costume'
           }
           chai.request(app)
             .put(`/costumes/${costume.id}`)

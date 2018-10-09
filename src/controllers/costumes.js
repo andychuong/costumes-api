@@ -35,8 +35,8 @@ function getOneCostume(req, res, next) {
   })
 }
 
-function updateCostumeName(req, res, next) {
-  const data = model.updateCostumeName(req.params.id, req.body)
+function updateCostume(req, res, next) {
+  const data = model.updateCostume(req.params.id, req.body)
   if (data.error) {
     return next({
       status: data.error.status,
@@ -65,6 +65,6 @@ module.exports = {
   createCostume,
   getAll,
   getOneCostume,
-  updateCostumeName,
+  updateCostume,
   deleteCostume
 }
