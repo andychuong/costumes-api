@@ -126,11 +126,13 @@ function createTag(costume, body){
 }
 
 function getTags(costumeId){
+  let error = ''
   const costume = costumes.find(costume => costume.id === costumeId)
   if(costume) {
     return costume.tags
   } else {
-    return {`Could not find costume with id of ${costumeID}`}
+    error = `Could not find costume with id of ${costumeID}`
+    return { error }
   }
 }
 
@@ -218,7 +220,7 @@ function deleteTag(costumeId, tagId){
   }
   return response
 }
-}
+
 
 module.exports = {
   createCostume,
