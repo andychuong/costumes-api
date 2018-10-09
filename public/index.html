@@ -9,37 +9,33 @@
   <h1>Costume API</h1>
   <h2>About</h2>
   <h3>Costumes</h3>
-  <li>* ID: (You Choose) A unique id that represents the costume. Created automatically.</li>
-  <li>* Name: (String) Name of the costume. Required.</li>
-  <li>* Price: (Number) Price of the costume. Cannot be less than 1 cent. Required.</li>
-  <li>* Description: (String) A description of the costume. Optional.</li>
-  <li>* Tags: (Array) An array of tags.</li>
+  <li> ID: (You Choose) A unique id that represents the costume. Created automatically.</li>
+  <li> Name: (String) Name of the costume. Required.</li>
+  <li> Price: (Number) Price of the costume. Cannot be less than 1 cent. Required.</li>
+  <li> Description: (String) A description of the costume. Optional.</li>
+  <li> Tags: (Array) An array of tags.</li>
   <h3>Tags</h3>
-  <li>* ID: (You Choose) A unique id that represents the tag. Created automatically.</li>
-  <li>* Name: (String) Name of the tag. Cannot be longer than 10 characters. Required.</li>
-  <li>* Color: (String) A color to be associated with the tag. Must be a valid hex color code (e.g. #123456). Optional.</li>
-  <li>* Tags will have different IDs even if they have the same name and color.</li>
+  <li> ID: (You Choose) A unique id that represents the tag. Created automatically.</li>
+  <li> Name: (String) Name of the tag. Cannot be longer than 10 characters. Required.</li>
+  <li> Color: (String) A color to be associated with the tag. Must be a valid hex color code (e.g. #123456). Optional.</li>
+  <li> Tags will have different IDs even if they have the same name and color.</li>
 
   <h3>RESTful routes so that you can:</h3>
 
-  <li>* Create, Read, Update, and Delete costumes</li>
-  <li>* Create, Read, Update, and Delete tags through costumes</li>
+  <li> Create, Read, Update, and Delete costumes</li>
+  <li> Create, Read, Update, and Delete tags through costumes</li>
   <h3>Costume Routes</h3>
-  <ul>
     <li>GET /costumes</li>
     <li>GET /costumes/:id</li>
     <li>POST /costumes</li>
     <li>PUT /costumes/:id</li>
     <li>DELETE /costumes/:id</li>
-  </ul>
   <h3>Costume Tag Routes</h3>
-  <ul>
     <li>GET /costumes/:id/tags</li>
     <li>GET /costumes/:id/tags/:tagid</li>
     <li>POST /costumes/:id</li>
-    <li>PUT /costumes/:id/tags/:tagid<</li>
-    <li>DELETE /costumes/:id/tags/:tagid<</li>
-  </ul>
+    <li>PUT /costumes/:id/tags/:tagid</li>
+    <li>DELETE /costumes/:id/tags/:tagid</li>
 </body>
 
 </html>
