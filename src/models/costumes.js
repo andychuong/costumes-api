@@ -51,35 +51,6 @@ function getOneCostume(id) {
   return response
 }
 
-// Update A Costume
-// function updateCostumeName(id, body) {
-//   let error = {}
-//   const costume = costumes.find(costume => costume.id === id)
-//   const costumeIndex = costumes.indexOf(costume)
-//   const name = body.name
-//   let response
-//   if (!costume) {
-//     error.message = `Could not find costume with id of ${id}`
-//     error.status = 404
-//     response = {
-//       error
-//     }
-//   } else if (!name) {
-//     error.message = `Name is required`
-//     error.status = 400
-//     response = {
-//       error
-//     }
-//   } else {
-//     costume.name = name
-//     costumes[costumeIndex] = costume
-//     response = {
-//       costume
-//     }
-//   }
-//   return response
-// }
-
 function updateCostume(id, body) {
   let error = {}
   const costume = costumes.find(costume => costume.id === id)
@@ -98,12 +69,6 @@ function updateCostume(id, body) {
     response = {
       error
     }
-  // } else if (!name) {
-  //   error.message = `Name is required`
-  //   error.status = 400
-  //   response = {
-  //     error
-  //   }
   } else {
     costume.name = newName
     costume.price = newPrice
@@ -163,13 +128,12 @@ function getTags(costume){
   return costume.tags
 }
 
-function getOneTag(costume, costId, tagId) {
+function getOneTag(costumeId, tagId) {
   let error = ''
   let response
-  const costume = costumes.find(costume => costume.id === costId)
+  const costume = costumes.find(costume => costume.id === costumeId)
   if (costume) {
     const tag = costumes.tags.find(tag => tag.id === tagId)
-    let response
     if (!tag) {
       error = `Could not find costume with id of ${id}`
       response = {
@@ -189,8 +153,41 @@ function getOneTag(costume, costId, tagId) {
   return response
 }
 
-function updateTag(costume, body) {
+function updateTag(costumeId, tagId, body) {
+  let error = {}
+  let response
+  const costume = costumes.find(costume => costume.id === costumeId)
+  if (costume) {
+    const tag = costumes.tags.find(tag => tag.id === tagId)
+    let tagIndex = costume.tags.indexOf(tag)
+    if(tag) {
+      let newName = tag.name
+      let newColor = tag.color
+      if(body.name) newName = body.name
+      if(body.color) newColor = body.color
+      tag.name = newName
+      tag.color = newColor
+      costume.tags[tagIndex] = tag
+      response = { tag }
+    } else {
+      error.message = `Could not find tag with id of ${tagId}`
+      error.status = 404
+      response = {
+        error
+      }
+    }
+  } else {
+    error.message = `Could not find costume with id of ${costumeId}`
+    error.status = 404
+    response = {
+      error
+    }
+  }
+  return response
+}
 
+function deleteTag(costumeId, tagId){
+  
 }
 
 module.exports = {
@@ -203,5 +200,5 @@ module.exports = {
   getTags,
   getOneTag,
   updateTag,
-  // deleteTag
+  deleteTag
 }
