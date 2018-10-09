@@ -20,11 +20,13 @@ function createTag(req, res, next) {
 }
 
 function getTags(req, res, next) {
+  console.log('gettags')
   const result = model.getTags(req.params.id)
-  if (data.error) {
+  if (result.error) {
     return next({
       status: 404,
-      message: result.error
+      message: `could not get tags`,
+      errors: result.error
     })
   }
   res.status(200).json({

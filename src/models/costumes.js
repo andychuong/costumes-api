@@ -113,16 +113,11 @@ function createTag(costumeId, body){
   console.log(name)
   console.log(color)
   if(costume) {
-    console.log('HELLLLO')
     if (!name || !color){
-      console.log('dont make things')
-      errors.push(`Name and color are required`)
       response = {
         errors
       }
     } else {
-      console.log('should make things')
-      // console.log(name)
       const newTag = {
         id: uuid(),
         name,
@@ -141,14 +136,22 @@ function createTag(costumeId, body){
 }
 
 function getTags(costumeId){
-  let error = ''
+  const errors = []
+  let response
   const costume = costumes.find(costume => costume.id === costumeId)
+  console.log(costume)
   if(costume) {
-    return costume.tags
-  } else {
-    error = `Could not find costume with id of ${costumeID}`
-    return { error }
+    console.log('make')
+    response =  costume.tags
+  } else{
+    console.log('bad')
+    errors.push(`Costume not found`)
+    response = {
+      errors
+    }
   }
+  console.log(response)
+  return response
 }
 
 function getOneTag(costumeId, tagId) {
@@ -158,7 +161,7 @@ function getOneTag(costumeId, tagId) {
   if (costume) {
     const tag = costumes.tags.find(tag => tag.id === tagId)
     if (!tag) {
-      error = `Could not find costume with id of ${id}`
+      error = `Could not find tag with id of ${tagId}`
       response = {
         error
       }
@@ -168,7 +171,7 @@ function getOneTag(costumeId, tagId) {
       }
     }
   } else {
-    error = `Could not find costume with id of ${id}`
+    error = `Could not find costume with id of ${costumeId}`
     response = {
       error
     }
