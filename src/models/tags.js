@@ -7,16 +7,18 @@ const model = require('../models/costumes')
 function createTag(body) {
   const errors = []
   const name = body.name
+  const color = body.color
   let response
-  if (!name) {
-    errors.push(`Name is required`)
+  if (!name || !color) {
+    errors.push(`Name and color are required`)
     response = {
       errors
     }
   } else {
     const newTag = {
       id: uuid(),
-      name
+      name,
+      color
     }
     tags.push(newTag)
     response = newTag

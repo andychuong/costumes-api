@@ -6,8 +6,10 @@ const costumes = []
 function createCostume(body) {
   const errors = []
   const name = body.name
+  const price = body.price
+  const desc = body.desc
   let response
-  if (!name) {
+  if (!name || !price || !desc) {
     errors.push(`Name is required`)
     response = {
       errors
@@ -15,7 +17,10 @@ function createCostume(body) {
   } else {
     const newCostume = {
       id: uuid(),
-      name
+      name,
+      price,
+      desc,
+      tags: []
     }
     costumes.push(newCostume)
     response = newCostume
@@ -47,7 +52,7 @@ function getOneCostume(id) {
 }
 
 // Update A Costume
-function updateCostume(id, body) {
+function updateCostumeName(id, body) {
   let error = {}
   const costume = costumes.find(costume => costume.id === id)
   const costumeIndex = costumes.indexOf(costume)
@@ -95,10 +100,33 @@ function deleteCostume(id) {
   return response
 }
 
+function createTag(costume, body){
+  const errors = []
+  const name = body.name
+  const Color = body.color
+
+  let response
+  if (!name || !color) {
+    errors.push(`Name and color are required`)
+    response = {
+      errors
+    }
+  } else {
+    const newTag = {
+      id: uuid(),
+      name,
+      color
+    }
+    costumes.tags.push(newTag)
+    response = newTag
+  }
+  return response
+}
+
 module.exports = {
   createCostume,
   getAllCostumes,
   getOneCostume,
-  updateCostume,
+  updateCostumeName,
   deleteCostume
 }

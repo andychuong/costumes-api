@@ -8,7 +8,9 @@ describe('costumes Resources', function() {
   describe('POST /', function() {
     it('should create a costume', function(done) {
       const costume = {
-        name: 'Harry Potter'
+        name: 'Harry Potter',
+        price: '$5.90',
+        desc: 'Cooooool Harry Potter Costue'
       }
       chai.request(app)
         .post('/costumes')
