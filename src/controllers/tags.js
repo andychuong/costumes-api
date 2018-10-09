@@ -1,5 +1,5 @@
 // Controllers
-const model = require('../models/tags')
+const model = require('../models/costumes')
 
 function createTag(req, res, next) {
   console.log('createtag')

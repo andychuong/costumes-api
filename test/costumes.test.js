@@ -110,25 +110,25 @@ describe('costumes Resources', function() {
 
     })
 
-    it('should return an error if name is missing', function(done) {
-      chai.request(app)
-        .get('/costumes')
-        .end((err, res) => {
-          expect(res.status).to.equal(200)
-          expect(res.body.data).to.be.an('array')
-          const costume = res.body.data[0]
-          const newInfo = {}
-          chai.request(app)
-            .put(`/costumes/${costume.id}`)
-            .send(newInfo)
-            .end((err, res) => {
-              expect(res.status).to.equal(400)
-              expect(res.body.error).to.be.an('object')
-              expect(res.body.error.message).to.be.ok
-              done()
-            })
-        })
-    })
+    // it('should return an error if name is missing', function(done) {
+    //   chai.request(app)
+    //     .get('/costumes')
+    //     .end((err, res) => {
+    //       expect(res.status).to.equal(200)
+    //       expect(res.body.data).to.be.an('array')
+    //       const costume = res.body.data[0]
+    //       const newInfo = {}
+    //       chai.request(app)
+    //         .put(`/costumes/${costume.id}`)
+    //         .send(newInfo)
+    //         .end((err, res) => {
+    //           expect(res.status).to.equal(400)
+    //           expect(res.body.error).to.be.an('object')
+    //           expect(res.body.error.message).to.be.ok
+    //           done()
+    //         })
+    //     })
+    // })
   })
 
   describe('DELETE /:id', function() {
